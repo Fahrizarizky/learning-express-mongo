@@ -15,6 +15,9 @@ mongoose
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+//Import Model
+const Product = require("./models/products");
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
