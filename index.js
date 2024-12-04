@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const app = express();
 
 mongoose
@@ -14,6 +15,7 @@ mongoose
 
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -36,6 +38,11 @@ app.get("/products/create", (req, res) => {
 app.post("/products", async (req, res) => {
   const product = new Product(req.body);
   await product.save();
+  res.redirect("/products/" + product._id);
+});
+
+app.put("/products/:id", async (req, res) => {
+  const product = await Product.findByIdAndUpdate(req.params.id, req.body);
   res.redirect("/products/" + product._id);
 });
 
