@@ -27,6 +27,10 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
+app.get("/products/create", (req, res) => {
+  res.render("products/create");
+});
+
 app.get("/products/:id", async (req, res) => {
   const detailProducts = await Product.findById(req.params.id);
   res.render("products/detail", { detailProducts });
