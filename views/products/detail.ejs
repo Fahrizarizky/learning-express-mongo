@@ -10,7 +10,12 @@
     <h2>Nama Product:<%= detailProducts.name %></h2>
     <p>Deskripsi:<%= detailProducts.description %></p>
     <p>Stok: <%= detailProducts.stock %></p>
-    <p>Kategori: <%= detailProducts.category %></p>
+    <p>
+      Kategori:
+      <a href="/products?category=<%= detailProducts.category %>"
+        ><%= detailProducts.category %></a
+      >
+    </p>
     <strong>Harga: <%= detailProducts.price %></strong><br />
     <a href="/products">back to all products</a>|
     <a href="/products/<%= detailProducts._id %>/edit">Edit</a>
