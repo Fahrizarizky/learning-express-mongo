@@ -27,6 +27,11 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
+app.get("/products/:id", async (req, res) => {
+  const detailProducts = await Product.findById(req.params.id);
+  res.render("products/detail", { detailProducts });
+});
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
